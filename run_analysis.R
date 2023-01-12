@@ -60,4 +60,7 @@ save(df_light,file="df_light.Rda")
 df_summary <- df_light %>% group_by(subject_identifier,activity_code,activity_label) %>% summarize(across(everything(),mean))
 # export df_sumamry
 save(df_summary,file="df_summary.Rda")
-                                                                                                   
+                                       
+### final for assignment
+write.table(df_light,file ="df_light_and_clean.txt",row.names = FALSE)
+                                                            
