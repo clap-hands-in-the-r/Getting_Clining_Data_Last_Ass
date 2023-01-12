@@ -1,0 +1,63 @@
+---
+title: "CodeBook"
+author: "Mael Elegoet"
+date: "2023-01-12"
+output: html_document
+---
+
+
+
+## CodeBook for Getting and cleaning data final assignment
+
+
+The fisrt task in this assignment was to understand the datas and metadatas and how their were linked together.
+It wasn't really difficult, but they were no too much info ;)
+I just had to take some time.
+
+In my zero Step I made all the preparatory work loading all datasets.
+Each dataset was made of 561 variables which were all discribed in the features.txt file.
+
+In first step, first of all I made complete datasets both for test sample and for training sample.
+I wanted to have complete datasets with all variables from the begining of the work.
+so I merged records, activity codes and subject identifier from the three sources (X_test the raw data file, y_test the activity label corresponding to each record of X_test and finally subject_test which was the subject identifier for also each row in X_test).
+The correspondance was line to line so I had just to use cbind().
+
+I did the same operations with the training sample.
+
+Finally I merged the two datasets (test and training) whom had exactly the same columns. So rbind() was good for this treatment.
+
+I then went to step 4 because I wanted all my columns to have clear names in my dataset.
+
+Then I selected only the columns with mean or standard deviation (std) in their title as it was asked at step 2.
+I used the dplyr command select with match function from base r. Plus, I kept the activity code and subject identifier from step 1.
+
+Finally I used a left join to add the activity labels to the light dataframe obtained at previous step. This was asked in step 3.
+
+Lastly I used the group_by command from dplyr package in order to summarize the dataset by subject and activity with the mean for each variable.
+
+That is.
+
+```{r data load}
+load("df_light.Rda")
+load("df_summary.Rda")
+
+```
+
+
+
+* Names of the variables in the clean dataset
+```{r df_light names}
+
+colnames(df_light)
+
+
+```
+
+
+* Names of the variables in the summary of the dataset
+
+```{r df_summary names}
+colnames(df_summary)
+
+```
+
