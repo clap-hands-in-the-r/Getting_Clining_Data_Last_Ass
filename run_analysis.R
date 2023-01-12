@@ -62,5 +62,5 @@ df_summary <- df_light %>% group_by(subject_identifier,activity_code,activity_la
 save(df_summary,file="df_summary.Rda")
                                        
 ### final for assignment
-write.table(df_light,file ="df_summary.txt",row.names = FALSE)
+write.table(df_summary,file ="df_summary.txt",row.names = FALSE)
                                                             
